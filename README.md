@@ -21,5 +21,5 @@ O Sistema de Gestão de Tarefas foi o exemplo proposto para o teste prático de 
 - Configurar um banco de dados postgreSQL local.
 - Realizar o clone do projeto e importa-lo no eclipse pelo caminho File -> Import... -> Maven -> Existing Maven Projects
 - Setar a url, username e password do banco de dados no arquivo que está na pasta raiz do projeto META-INF -> persistence.xml
-- Executar o "Run as Java Application" no arquivo PartidasApplication.java
-- As tabelas serão criadas na primeira execução e o sistema estará pronto para ser utilizado.
+- Configurar o servidor Tomcat 9, após configurado dar "Start" e acessar localhost:8080/tarefas/index.xhtml
+- As tabelas serão criadas ao executar o projeto pela primeira vez, e o sistema estará pronto para uso.

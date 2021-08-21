@@ -1,9 +1,7 @@
 package br.com.tarefas.controllers;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -18,9 +16,7 @@ import br.com.tarefas.services.ResponsavelService;
 public class ResponsavelMBean {
 	
 	private Responsavel responsavel;
-	
 	private ResponsavelService responsavelService;
-	
 	private List<Responsavel> listaResponsavel;
 
 	public ResponsavelMBean() {
@@ -48,6 +44,7 @@ public class ResponsavelMBean {
 	}
 	
 	public String removerResposanvel(Long id) {
+		System.out.println(">>>>>>>>>>>>>>>>>>>> remover ID: " + id);
 		responsavelService.delete(id);
 		addMensagemSucesso("Responsável removido com sucesso!");
 		
@@ -72,8 +69,14 @@ public class ResponsavelMBean {
 		this.responsavel = responsavel;
 	}
 	
-	public List<Responsavel> getResponsaveis() {		
-		return responsavelService.findAll();
+	public List<Responsavel> getResponsaveis() {	
+		List<Responsavel> lista = responsavelService.findAll();
+		
+		lista.forEach((Responsavel responsavel)->{
+			System.out.println(">>>>> ID: "+ responsavel.getId() +", >>>>> Nome:" + responsavel.getNome());
+		});
+		
+		return lista;
 	}
 	
 	public List<String> getNomeResponsaveis() {
@@ -86,7 +89,6 @@ public class ResponsavelMBean {
 		
 		return listaDeNomes;
 	}
-	
 	
 	public List<Responsavel> getListaResponsavel() {
 		return listaResponsavel;

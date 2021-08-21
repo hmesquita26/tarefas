@@ -17,9 +17,7 @@ import br.com.tarefas.services.TarefaService;
 public class TarefaMBean {
 	
 	private Tarefa tarefa;
-	
 	private List<Tarefa> tarefas;
-	
 	private TarefaService tarefaService;
 
 	public TarefaMBean() {
