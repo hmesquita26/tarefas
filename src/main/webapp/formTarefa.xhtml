@@ -59,8 +59,8 @@
 			
 								<h:selectOneMenu value="#{responsavelMBean.responsaveis}" styleClass="custom-select">
 									<f:selectItem itemValue="0" itemLabel="--SELECIONE--" />
-									<f:selectItems value="#{responsavelMBean.responsaveis}" var="responsavel"
-										itemValue="#{responsavel}" itemLabel="#{responsavelMBean.responsavel.nome}" />
+									<f:selectItems value="#{responsavelMBean.nomeResponsaveis}" var="responsavel"
+										itemValue="#{responsavel}" itemLabel="#{responsavel}" />
 								</h:selectOneMenu>
 							</div>
 						</div>
@@ -71,7 +71,7 @@
 									<label class="input-group-text" for="prioridade">Prioridade</label>
 								</div>
 			
-								<h:selectOneMenu value="#{tarefaMBean.tarefa.prioridade}"
+								<h:selectOneMenu id="id" value="#{tarefaMBean.tarefa.prioridade}"
 									styleClass="custom-select">
 									<f:selectItem itemValue="0" itemLabel="--SELECIONE--" />
 									<f:selectItems value="#{tarefaMBean.prioridades}" var="tarefa" itemValue="#{tarefa}" itemLabel="#{tarefaMBean.tarefa.prioridade}" />
@@ -98,7 +98,6 @@
 							<h:commandButton action="#{tarefaMBean.salvarTarefa()}" value="Cadastrar" styleClass="btn btn-primary float-right"/>
 						</div>
 					</div>		
-					
 					
 				</div>
 			</div>

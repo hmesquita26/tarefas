@@ -31,13 +31,19 @@ public class TarefaMBean {
 	public String cadastrarTarefa() {
 		tarefa = new Tarefa();
 		
+		return "/index.xhtml";
+	}
+	
+	public String editarTarefa(Tarefa tarefa) {
+		tarefa = tarefaService.findById(tarefa.getId());
+		
 		return "/formTarefa.xhtml";
 	}
 	
 	public String listarTarefas() {
 		tarefas  = new ArrayList<>();
 		
-		return "/index.xhtml";
+		return "/listagemTarefas.xhtml";
 	}
 	
 	public String salvarTarefa() throws Exception {
@@ -55,6 +61,12 @@ public class TarefaMBean {
 	public String removerTarefa(Long id) {
 		tarefaService.delete(id);
 		addMensagemSucesso("Tarefa removida com sucesso.");
+		
+		return null;
+	}
+	
+	public String concluirTarefa(Long id) {
+		
 		
 		return null;
 	}
@@ -79,6 +91,10 @@ public class TarefaMBean {
 
 	public List<Tarefa> getTarefas() {
 		return tarefas;
+	}
+	
+	public List<Tarefa> getTodasTarefas() {
+		return tarefaService.findAll();
 	}
 
 	public void setTarefas(List<Tarefa> tarefas) {

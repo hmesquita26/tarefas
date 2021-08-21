@@ -1,7 +1,9 @@
 package br.com.tarefas.controllers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -70,9 +72,21 @@ public class ResponsavelMBean {
 		this.responsavel = responsavel;
 	}
 	
-	public List<Responsavel> getResponsaveis() {
+	public List<Responsavel> getResponsaveis() {		
 		return responsavelService.findAll();
 	}
+	
+	public List<String> getNomeResponsaveis() {
+		List<String> listaDeNomes = new ArrayList<>();
+		
+		listaResponsavel = responsavelService.findAll();
+		listaResponsavel.forEach((Responsavel responsavel) -> {
+			listaDeNomes.add(responsavel.getNome());
+		});
+		
+		return listaDeNomes;
+	}
+	
 	
 	public List<Responsavel> getListaResponsavel() {
 		return listaResponsavel;

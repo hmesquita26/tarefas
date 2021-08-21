@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+		crossorigin="anonymous" />
+	<title>Sistema de Gestão de Tarefas</title>
+</h:head>
+<h:body>
+
+
+<h:form>
+
+		<nav class="navbar navbar-expand-sm bg-dark">
+			<!-- Links -->
+			<ul class="navbar-nav mr-auto">
+				<li>
+					<h3 style="color: white;">Gerenciador de Tarefas</h3>
+				</li>
+			</ul>
+			<ul class="navbar-nav float-right">
+				<li class="nav-item"><h:commandLink value="Cadastrar Responsável" action="#{responsavelMBean.cadastrarResponsavel()}" styleClass="btn btn-success" /></li>
+			</ul>
+			<ul class="navbar-nav float-right">
+				<li class="nav-item"><h:commandLink value="Cadastrar Tarefa" action="#{tarefaMBean.cadastrarTarefa()}" styleClass="btn btn-success" /></li>
+			</ul>
+		</nav>
+
+		<h:messages errorClass="alert alert-danger" infoClass="alert alert-success" />
+
+		<div class="container my-3">
+			<div class="card text-white bg-dark mb-3">
+				<div class="card-header">
+					<h3 style="color:white;">Listagem de Tarefas</h3>
+				</div>
+				<div class="card-body">
+					<h:dataTable id="todasTarefas" value="#{tarefaMBean.todasTarefas}" var="tarefa" styleClass="table">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText class="text-white" value="Número"/>
+							</f:facet>
+							<h:outputText class="text-white" value="#{tarefa.id}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText class="text-white" value="Título"/>
+							</f:facet>
+							<h:outputText class="text-white" value="#{tarefa.titulo}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText class="text-white" value="Responsável"/>
+							</f:facet>
+							<h:outputText class="text-white" value="#{tarefa.responsavel.nome}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText class="text-white float-right" value="Ações"/>
+							</f:facet>
+							<h:commandLink action="#{tarefaMBean.removerTarefa(tarefa.id)}" title="Remover"><i class="float-right text-red fas fa-trash"></i></h:commandLink>
+							<h:commandLink action="#{tarefaMBean.editarTarefa(tarefa)}" title="Editar"><i class="float-right text-red fas fa-update"></i></h:commandLink>
+							<h:commandLink action="#{tarefaMBean.concluirTarefa(tarefa.id)}" title="Concluir"><i class="float-right text-red fas fa-trash">Concluir</i></h:commandLink>
+						</h:column>
+					</h:dataTable>
+				</div>
+			</div>
+		</div>
+
+</h:form>
+
+
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
+</h:body>
+</html>

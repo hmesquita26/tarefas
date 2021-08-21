@@ -59,24 +59,24 @@
 					<h3 style="color:white;">Lista de Responsáveis</h3>
 				</div>
 				<div class="card-body">
-					<h:dataTable id="listaResposaveis" value="#{resposavelMBean.listaResponsavel}" var="responsavel" styleClass="table">
+					<h:dataTable id="listaResposaveis" value="#{responsavelMBean.responsaveis}" var="responsavel" styleClass="table">
 						<h:column>
 							<f:facet name="header">
 								<h:outputText class="text-white" value="ID"/>
 							</f:facet>
-							<h:outputText class="text-white" value="#{responsavelMBean.responsavel.id}"/>
+							<h:outputText class="text-white" value="#{responsavel.id}"/>
 						</h:column>
 						<h:column>
 							<f:facet name="header">
 								<h:outputText class="text-white" value="Nome"/>
 							</f:facet>
-							<h:outputText class="text-white" value="#{responsavelMBean.responsavel.nome}"/>
+							<h:outputText class="text-white" value="#{responsavel.nome}"/>
 						</h:column>
 						<h:column>
 							<f:facet name="header">
 								<h:outputText class="text-white float-right" value="Ações"/>
 							</f:facet>
-							<h:commandLink action="#{partidaMBean.removerPartida(partida.id)}" title="Remover"><i class="text-white fas fa-trash"></i></h:commandLink>
+							<h:commandLink action="#{partidaMBean.removerPartida(partida.id)}" title="Remover"><i class="float-right text-red fas fa-trash"></i></h:commandLink>
 						</h:column>
 					</h:dataTable>
 				</div>

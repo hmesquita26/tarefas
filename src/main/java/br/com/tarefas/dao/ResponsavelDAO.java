@@ -55,7 +55,7 @@ private EntityManager entityManager;
 	public List<Responsavel> findAll() {
 		List<Responsavel> result = null;
 		try {
-			Query query = entityManager.createQuery("FROM Responsavel ORDER BY id DESC");
+			Query query = entityManager.createQuery("FROM Responsavel ORDER BY id ASC");
 			result = query.getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();

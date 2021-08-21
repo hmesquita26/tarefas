@@ -27,6 +27,83 @@
 					styleClass="btn btn-success" /></li>
 		</ul>
 	</nav>
+	
+	<h:messages errorClass="alert alert-danger" infoClass="alert alert-success" />
+		
+		<div class="container my-3">
+			<div class="card text-white bg-dark mb-3" >
+				<div class="card-header">
+					<h3>Cadastro de Tarefas</h3>
+				</div>
+				<div class="card-body">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="titulo">Título</span>
+						</div>
+						<h:inputText value="#{tarefaMBean.tarefa.titulo}" styleClass="form-control"/>
+					</div>
+					
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="descricao">Descrição</span>
+						</div>
+						<h:inputTextarea value="#{tarefaMBean.tarefa.descricao}" styleClass="form-control" cols="15" rows="6" />
+					</div>
+
+					<div class="row">
+						<div class="col-6">
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<label class="input-group-text" for="responsavel">Responsável</label>
+								</div>
+			
+								<h:selectOneMenu value="#{responsavelMBean.responsaveis}" styleClass="custom-select">
+									<f:selectItem itemValue="" itemLabel="--SELECIONE--" />
+									<f:selectItems value="#{responsavelMBean.nomeResponsaveis}" var="responsavel"
+										itemValue="#{responsavel}" itemLabel="#{responsavel}" />
+								</h:selectOneMenu>
+							</div>
+						</div>
+						
+						<div class="col-6">
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<label class="input-group-text" for="prioridade">Prioridade</label>
+								</div>
+			
+								<h:selectOneMenu id="id" value="#{tarefaMBean.tarefa.prioridade}"
+									styleClass="custom-select">
+									<f:selectItem itemValue="0" itemLabel="--SELECIONE--" />
+									<f:selectItems value="#{tarefaMBean.prioridades}" var="tarefa" itemValue="#{tarefa}" itemLabel="#{tarefaMBean.tarefa.prioridade}" />
+								</h:selectOneMenu>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-6">
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="data">Deadline</span>
+								</div>
+								<h:inputText value="#{tarefaMBean.tarefa.deadline}" styleClass="form-control" maxlength="10">
+									<f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+								</h:inputText>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-12">
+							<h:commandButton action="#{tarefaMBean.salvarTarefa()}" value="Cadastrar" styleClass="btn btn-primary float-right"/>
+						</div>
+					</div>		
+					
+					
+				</div>
+			</div>
+		</div>
+	
 </h:form>
 	
 
