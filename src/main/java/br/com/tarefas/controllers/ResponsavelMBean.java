@@ -44,7 +44,6 @@ public class ResponsavelMBean {
 	}
 	
 	public String removerResposanvel(Long id) {
-		System.out.println(">>>>>>>>>>>>>>>>>>>> remover ID: " + id);
 		responsavelService.delete(id);
 		addMensagemSucesso("Responsável removido com sucesso!");
 		
@@ -73,7 +72,8 @@ public class ResponsavelMBean {
 		List<Responsavel> lista = responsavelService.findAll();
 		
 		lista.forEach((Responsavel responsavel)->{
-			System.out.println(">>>>> ID: "+ responsavel.getId() +", >>>>> Nome:" + responsavel.getNome());
+			System.out.println(">>>>> ID: "+ responsavel.getId() 
+				+", >>>>> Nome:" + responsavel.getNome());
 		});
 		
 		return lista;
